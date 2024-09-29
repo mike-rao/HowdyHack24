@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    // Check if user ID is in local storage
+    window.onload = function() {
+        const userID = localStorage.getItem("userID");
+        if (!userID) {
+            // Redirect to login if user is not logged in
+            window.location.href = '/'; // Adjust to your login route
+        }
+    };
+</script>
+
+    <div class="survey-container">
+        <h1>Create Your Profile</h1>
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="fullName">Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your preferred name!" required>
+            </div>
+
+             <!-- Question for gender preference -->
+             <div class="form-group">
+                <label for="gender">What is your gender?</label>
+                <div class="rating-options">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+            </div>
+
+            <!-- Question for city using a free response -->
+            <div class="form-group">
+                <label for="homeTown">What is your hometown?</label>
+                <input type="text" id="homeTown" name="homeTown" placeholder="Enter a city" required>
+            </div>
+
+            <!-- Question for state using a dropdown -->
+            <div class="form-group">
+                <label for="state">What state are your from?</label>
+                <select id="state" name="state">
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>                
+                </select>
+            </div>
+
+            <!-- Question for major using a dropdown -->
+            <div class="form-group">
+                <label for="department">What department are you from?</label>
+                <select id="department" name="department">
+                    <option value="College of Agriculture and Life Sciences">College of Agriculture and Life Sciences</option>
+                    <option value="College of Architecture">College of Architecture</option>
+                    <option value="Mays Business School">Mays Business School</option>
+                    <option value="College of Education and Human Development">College of Education and Human Development</option>
+                    <option value="College of Engineering">College of Engineering</option>
+                    <option value="College of Geosciences">College of Geosciences</option>
+                    <option value="College of Liberal Arts">College of Liberal Arts</option>
+                    <option value="College of Science">College of Science</option>
+                    <option value="School of Public Health">School of Public Health</option>
+                    <option value="College of Veterinary Medicine and Biomedical Sciences">College of Veterinary Medicine and Biomedical Sciences</option>
+                </select>
+            </div>
+
+            <!-- Question for selecting an age using feed back, use min to require it to be positive-->
+            <div class="form-group">
+                <label for="age">What is your age?</label>
+                <textarea id="age" name="age" rows="1" placeholder="Enter an age!" min="0"></textarea>
+            </div>
+
+            <!-- Question for getting a phone number -->
+            <div class="form-group">
+                <label for="phoneNumber">What is your phone number so that people can contact you?</label>
+                <textarea id="phoneNumber" name="phoneNumber" rows="1" placeholder="XXX-XXX-XXXX"></textarea>
+            </div>
+
+            <!-- Question for getting the short bio -->
+            <div class="form-group">
+                <label for="bio">Please enter a short bio! Feel free to describe yourself and add any interests/hobbies you may have:</label>
+                <textarea id="bio" name="bio" rows="5" placeholder="Type a short biography!"></textarea>
+            </div>
+
+            <!-- Question for sleep preference -->
+            <div class="form-group">
+                <label for="selfSleepTime">What time do you normally sleep?</label>
+                <div class="rating-options">
+                    <label><input type="radio" name="selfSleepTime" value="Before 8pm"> Before 8pm</label>
+                    <label><input type="radio" name="selfSleepTime" value="Between 8 to 10pm"> Between 8 to 10pm</label>
+                    <label><input type="radio" name="selfSleepTime" value="Between 10 to 12pm"> Between 10 to 12pm</label>
+                    <label><input type="radio" name="selfSleepTime" value="After midnight"> After midnight</label>
+                </div>
+            </div>
+
+            <!-- Question for entering the temperature -->
+            <div class="form-group">
+                <label for="roomTemp">What do you set your room temperature to?</label>
+                <input type="text" id="roomTemp" name="roomTemp" placeholder="__ (°F)" required>
+            </div>
+
+            <!-- Question for slider for cleanliness for self user-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="selfCleanliness">How clean do you keep your room?</label>
+                <div class="slider-labels">
+                    <span>Very Messy</span>
+                    <span>Very Clean</span>
+                </div>
+                <!-- Slider input -->
+                <input type="range" id="selfCleanliness" name="selfCleanliness" min="0" max="10" value="5" oninput="updateCleanValue(this.value)">
+                <!-- Display the current slider value -->
+                <p>Cleanliness Level: <span id="cleanliness-value">5</span></p>
+            </div>
+            <script>
+                function updateCleanValue(value) {
+                    document.getElementById('cleanliness-value').textContent = value;
+                }
+            </script>
+
+            <!-- Question for slider for guest frequency for self user-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="selfGuests">How often do you have guests over?</label>
+                <div class="slider-labels">
+                    <span>Never</span>
+                    <span>Very Often</span>
+                </div>
+                <!-- Slider input -->
+                <input type="range" id="selfGuests" name="selfGuests" min="0" max="10" value="5" oninput="updateGuestValue(this.value)">
+                <!-- Display the current slider value -->
+                <p>Guest Frequency: <span id="guest_frequency">5</span></p>
+            </div>
+            <script>
+                function updateGuestValue(value) {
+                    document.getElementById('guest_frequency').textContent = value;
+                }
+            </script>
+
+            <!-- Question for slider for loudness for self user-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="selfLoudness">How loud would you say you are?</label>
+                <div class="slider-labels">
+                    <span>Enjoys Silence</span>
+                    <span>Enjoys Music and Noise</span>
+                </div>
+                <!-- Slider input -->
+                <input type="range" id="selfLoudness" name="selfLoudness" min="0" max="10" value="5" oninput="updateLoudValue(this.value)">
+                <!-- Display the current slider value -->
+                <p>Loudness Rating: <span id="loud_attribute">5</span></p>
+            </div>
+            <script>
+                function updateLoudValue(value) {
+                    document.getElementById('loud_attribute').textContent = value;
+                }
+            </script>
+
+            <!-- Question for slider for loudness for self user-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="roommateInteraction">How much do you want to interact with your roommate?</label>
+                <div class="slider-labels">
+                    <span>Strangers</span>
+                    <span>Roomie BFFs</span>
+                </div>
+                <!-- Slider input -->
+                <input type="range" id="roommateInteraction" name="roommateInteraction" min="0" max="10" value="5" oninput="updateInteractValue(this.value)">
+                <!-- Display the current slider value -->
+                <p>Roommate Interaction: <span id="interact_attribute">5</span></p>
+            </div>
+            <script>
+                function updateInteractValue(value) {
+                    document.getElementById('interact_attribute').textContent = value;
+                }
+            </script>
+
+
+            <div class="form-group">
+                <button type="submit" class="submit-button">Submit Survey</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Collect form data
+            const formData = new FormData(this);
+            const formDataObject = Object.fromEntries(formData.entries()); // Convert FormData to an object
+    
+            try {
+                // Send a POST request to the server
+                console.log(localStorage)
+                const userID = localStorage.getItem("userID");
+                console.log(userID)
+                const response = await fetch(`http://localhost:8080/user/update/${userID}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formDataObject), // Convert form data object to JSON
+                });
+                console.log(response.status)
+                // Handle the response
+                if (response.status==200) {
+                    alert('Profile updated successfully!');
+                } else {
+                    throw new Error(response.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while updating your profile.');
+            }
+            window.location.href = '/preferences';
+        });
+    </script>
+    
+{% endblock %}
+
+{% block css_file %}
+    styleCreateProfile.css
+{% endblock %}

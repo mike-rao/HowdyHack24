@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roommate Matching App</title>
+    <!-- Load different CSS files dynamically -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='navbar.css') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename=css_file) }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul id="navList">
+        <li>
+          <a
+            href="{{ url_for('create_profile') }}"
+            class="{% if current_page == 'create_profile' %}active{% endif %}"
+            >Create Profile</a
+          >
+        </li>
+        <li>
+          <a
+            href="{{ url_for('roommate_preferences') }}"
+            class="{% if current_page == 'roommate_preferences' %}active{% endif %}"
+            >Preferences</a
+          >
+        </li>
+        <li>
+          <a
+            href="{{ url_for('profile_card') }}"
+            class="{% if current_page == 'profile_card' %}active{% endif %}"
+            >Profile</a
+          >
+        </li>
+        <li>
+          <a
+            href="{{ url_for('swipes') }}"
+            class="{% if current_page == 'swipes' %}active{% endif %}"
+            >Swipes</a
+          >
+        </li>
+        <li>
+          <a
+            href="{{ url_for('matches') }}"
+            class="{% if current_page == 'matches' %}active{% endif %}"
+            >Matches</a
+          >
+        </li>
+        <li class="logout"><a style="cursor: pointer" id="logoutButton">Logout</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">{% block content %}{% endblock %}</div>
+    <script>
+      load = function () {
+        const userId = localStorage.getItem("userID");
+        const navList = document.getElementById("navList");
+
+        // If userId is undefined, hide all links except for Login
+        if (!userId) {
+          const links = navList.getElementsByTagName("li");
+          for (let i = 0; i < links.length; i++) {
+            if (links[i].innerText !== "Login") {
+              links[i].style.display = "none"; // Hide the link
+            }
+          }
+        }
+      };
+      load();
+    </script>
+
+    <script>
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+          localStorage.clear();
+          window.location.href = "/";
+        });
+    </script>
+  </body>
+</html>

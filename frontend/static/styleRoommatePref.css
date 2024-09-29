@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-top: 0px; /* Add padding to the top */
+}
+
+body {
+  font-family: "Sriracha", sans-serif;
+  background-color: #f6c9d3; /* Light Pink Background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding-top: 210px;
+}
+
+.survey-container {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+}
+
+h1 {
+  font-family: "Sriracha", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #800000; /* Maroon Heading */
+  padding-top: 1120px;
+  padding-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000000; /* Pinkish Maroon Border */
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  background-color: #ececec; /* Light Pink Background for Inputs */
+}
+
+textarea {
+  resize: none;
+}
+
+.rating-options label {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #800000; /* Maroon Button */
+  color: #fff; /* White Text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #d32f2f; /* Pinkish Maroon Hover */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #800000; /* Maroon Focus Border */
+}

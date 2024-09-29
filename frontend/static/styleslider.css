@@ -1,0 +1,111 @@
+/* General container styling */
+.slider-container {
+  width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Question label */
+label {
+  font-family: "Sriracha", sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  margin: 20px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px; /* Width of the heart */
+  height: 40px; /* Height of the heart */
+  background-image: url("../static/heartNoB.png"); /* Path to heart image */
+  background-size: cover;
+  border-radius: 50%; /* Keep this for smooth edges */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #800000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+input[type="range"]:hover {
+  opacity: 1; /* Increase opacity on hover */
+}
+
+input[type="range"]:focus {
+  opacity: 1;
+}
+
+/* Labels for the slider */
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.slider-labels span {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Cleanliness value */
+#cleanliness-value {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}
+
+/* Guest value */
+#guest-value {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}
+
+/* Loud value */
+#loud-value {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}
+
+/* Guest Frequency */
+#guest_frequency {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}
+
+/* Loud Attribute */
+#loud_attribute {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}
+
+/* Interact Attribute */
+#interact_attribute {
+  font-weight: bold;
+  color: #800000; /* Maroon color for the value */
+}

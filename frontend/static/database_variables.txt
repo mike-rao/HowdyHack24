@@ -1,0 +1,26 @@
+gender: male, female, other/prefer not to say
+phone_number: (###) ###-####
+self/roomie_sleep: Before 8, 8-10, 10-12, After midnight
+
+dataframe order: 
+gender
+first name
+last name
+age
+phone number
+room temperature
+self cleanliness
+self have guests over
+self loudness
+roommate interaction
+self sleep time
+self major
+roommate sleep time
+roommate major
+roommate age
+roommate cleanliness
+roommate guests over tolerance
+roommate loudness
+did this user "swipe right/match with you"
+email
+full name

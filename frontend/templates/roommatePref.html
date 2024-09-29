@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    // Check if user ID is in local storage
+    window.onload = function() {
+        const userID = localStorage.getItem("userID");
+        if (!userID) {
+            // Redirect to login if user is not logged in
+            window.location.href = '/'; // Adjust to your login route
+        }
+    };
+</script>
+    <div class="survey-container">
+        <h1> Your Roommate Preferences </h1>
+        <form id="roommateForm">
+
+            <!-- Question for sleep preference -->
+            <div class="form-group">
+                <label for="sleep_rating">What time would your ideal roommate go to sleep?</label>
+                <div class="rating-options">
+                    <label><input type="radio" name="sleep_rating" value="1"> Before 8pm</label>
+                    <label><input type="radio" name="sleep_rating" value="2"> Between 8 to 10pm</label>
+                    <label><input type="radio" name="sleep_rating" value="3"> Between 10 to 12pm</label>
+                    <label><input type="radio" name="sleep_rating" value="4"> After midnight</label>
+                </div>
+            </div>
+
+            <!-- Question for major using a dropdown -->
+            <div class="form-group">
+                <label for="roommateMajor">What department would you like your ideal roommate to be from?</label>
+                <select id="roommateMajor" name="roommateMajor">
+                    <option value="College of Agriculture and Life Sciences">College of Agriculture and Life Sciences</option>
+                    <option value="College of Architecture">College of Architecture</option>
+                    <option value="Mays Business School">Mays Business School</option>
+                    <option value="College of Education and Human Development">College of Education and Human Development</option>
+                    <option value="College of Engineering">College of Engineering</option>
+                    <option value="College of Geosciences">College of Geosciences</option>
+                    <option value="College of Liberal Arts">College of Liberal Arts</option>
+                    <option value="College of Science">College of Science</option>
+                    <option value="School of Public Health">School of Public Health</option>
+                    <option value="College of Veterinary Medicine and Biomedical Sciences">College of Veterinary Medicine and Biomedical Sciences</option>
+                </select>
+            </div>
+
+            <!-- Question for selecting an age using feed back, use min to require it to be positive-->
+            <div class="form-group">
+                <label for="roommateAge">What age would you like your ideal roommate to be?</label>
+                <textarea id="roommateAge" name="roommateAge" rows="1" placeholder="Enter an age!" min="0"></textarea>
+            </div>
+
+            <!-- Question for slider for cleanliness of roommate.-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="roommateCleanliness">How clean would your ideal roommate be?</label>
+                <div class="slider-labels">
+                    <span>Very Messy</span>
+                    <span>Very Clean</span>
+                </div>
+        
+                <!-- Slider input -->
+                <input type="range" id="roommateCleanliness" name="roommateCleanliness" min="0" max="10" value="5" oninput="updateCleanValue(this.value)">
+                
+                <!-- Display the current slider value -->
+                <p>Cleanliness Level: <span id="roommateCleanliness-value">5</span></p>
+            </div>
+
+            <!-- Custom value to update the slider for cleanliness -->
+            <script>
+                function updateCleanValue(value) {
+                    document.getElementById('roommateCleanliness-value').textContent = value;
+                }
+            </script>
+
+            <!-- Question for slider for guest frequency of a roommate-->
+            <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="roommateGuests">How often would your ideal roommate have guests over?</label>
+                <div class="slider-labels">
+                    <span>Never</span>
+                    <span>Very Often</span>
+                </div>
+        
+                <!-- Slider input -->
+                <input type="range" id="roommateGuests" name="roommateGuests" min="0" max="10" value="5" oninput="updateGuestValue(this.value)">
+                
+                <!-- Display the current slider value -->
+                <p>Guest Frequency: <span id="roommateGuest-value">5</span></p>
+            </div>
+            
+            <script>
+                function updateGuestValue(value) {
+                    document.getElementById('roommateGuest-value').textContent = value;
+                }
+            </script>
+
+             <!-- Question for roommate loudness-->
+             <div class="slider-container">
+                <link rel="stylesheet" href="../static/styleslider.css">
+                <label for="roommateLoudness">How loud would your ideal roommate be?</label>
+                <div class="slider-labels">
+                    <span>Keeps to themselves</span>
+                    <span>Partying it up!</span>
+                </div>
+        
+                <!-- Slider input -->
+                <input type="range" id="roommateLoudness" name="roommateLoudness" min="0" max="10" value="5" oninput="updateLoudValue(this.value)">
+                
+                <!-- Display the current slider value -->
+                <p>Roommate Loudness: <span id="roommateLoud-value">5</span></p>
+            </div>
+            
+            <script>
+                function updateLoudValue(value) {
+                    document.getElementById('roommateLoud-value').textContent = value;
+                }
+            </script>
+
+            <div class="form-group">
+                <button type="submit" class="submit-button">Submit Survey</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('roommateForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Collect form data
+            const formData = new FormData(this);
+            const formDataObject = Object.fromEntries(formData.entries()); // Convert FormData to an object
+    
+            try {
+                // Send a POST request to the server
+                const userID = localStorage.getItem("userID");
+                const response = await fetch(`http://localhost:8080/user/update/${userID}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formDataObject), // Convert form data object to JSON
+                });
+    
+                // Handle the response
+                if (response.status==200) {
+                    alert('Preferences updated successfully!');
+                } else {
+                    throw new Error(response.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while updating your preferences.');
+            }
+            window.location.href = '/swipes';
+        });
+    </script>
+
+{% endblock %}
+
+{% block css_file %}
+    styleRoommatePref.css
+{% endblock %}

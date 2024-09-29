@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+  // Check if user ID is in local storage and fetch matches
+  load = function () {
+    const userID = localStorage.getItem("userID");
+    if (!userID) {
+      // Redirect to login if user is not logged in
+      window.location.href = "/"; // Adjust to your login route
+      return;
+    }
+
+    // Fetch the match results using the userID
+    console.log(userID);
+    fetch(`http://localhost:8080/user/match/${userID}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((matches) => {
+        if (matches.length > 0) {
+          // Select the container to display matched roommates
+          const roommateList = document.querySelector(".roommate-list");
+
+          // Loop through matches and display them
+          matches.forEach((match) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("roommate-card");
+
+            // Display the user ID and MSE (or any other info)
+            listItem.innerHTML = `
+                            <div style="display: flex; align-items: center;">
+                                <div class="background-rectangle">
+                                    <div class="number">${(100-match.mse).toFixed(2)}%</div>
+                                </div>
+                                <span><strong>Match Percentage</strong></span>
+                            </div>
+                            <h2><strong>Roommate Name:</strong> ${match.fullName}</h2>
+                           <p><strong>Bio:</strong> ${match.bio}</p>
+                            <p><strong>Department:</strong> ${match.department}</p>
+                           <p><strong>Age:</strong> ${match.age}</p>
+                           <p><strong>Gender:</strong> ${match.gender}</p>
+                           <p><strong>Email:</strong> ${match.email}</p>
+                           <p><strong>Phone Number:</strong> ${match.phoneNumber}</p>
+                        `;
+
+            roommateList.appendChild(listItem);
+          });
+        } else {
+          // If no matches found, show a message
+          const message = document.createElement("p");
+          message.textContent = "No matches found.";
+          document.querySelector(".roommate-list").appendChild(message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching matches:", error);
+      });
+  };
+  load();
+</script>
+
+<div class="container">
+  <h1>Your Matched Roommates</h1>
+  <ul class="roommate-list">
+    <!-- Matches will be dynamically inserted here -->
+  </ul>
+</div>
+{% endblock %} {% block css_file %}
+<link rel="stylesheet" href="/static/styleMatches.css" />
+{% endblock %}

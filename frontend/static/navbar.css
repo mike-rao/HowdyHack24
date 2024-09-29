@@ -1,0 +1,47 @@
+nav {
+  background-color: #333 !important; /* Background color for the navbar */
+  padding: 1em !important; /* Padding around the navbar */
+  position: fixed !important; /* Fixed position to keep it at the top */
+  top: 0 !important; /* Align to the top of the page */
+  left: 0 !important; /* Align to the left side */
+  width: 100% !important; /* Ensure it takes the full width of the screen */
+  z-index: 1000 !important; /* Keep the navbar above other content */
+  font-family: Arial, sans-serif !important;
+}
+
+.container {
+  padding-top: 60px !important; /* Adjust the top padding to prevent content from overlapping the navbar */
+}
+
+nav ul li.logout {
+  float: right !important; /* Move the Logout link to the right */
+  padding-right: 15px;
+}
+
+nav ul {
+  list-style-type: none !important; /* Remove bullet points from the list */
+  margin: 0 !important; /* Remove default margin */
+  padding: 0 !important; /* Remove default padding */
+  overflow: hidden !important; /* Ensure the list items don't overflow */
+}
+
+nav ul li {
+  float: left !important; /* Align list items horizontally */
+  margin-right: 15px !important; /* Add space between list items */
+}
+
+nav ul li a {
+  color: white !important; /* Set the text color for links */
+  text-decoration: none !important; /* Remove underline from links */
+  padding: 14px 20px !important; /* Add padding around the links */
+  display: block !important; /* Ensure the entire link area is clickable */
+}
+
+nav ul li a.active {
+  background-color: #555 !important; /* Background color for the active link */
+  color: #f6c9d3 !important; /* Text color for the active link */
+}
+
+nav ul li a:hover {
+  background-color: #111 !important; /* Change the background color when hovering over a link */
+}

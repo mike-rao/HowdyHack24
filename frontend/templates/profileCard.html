@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+  load = async function() {
+      const userID = localStorage.getItem("userID");
+      console.log(userID)
+      if (!userID) {
+          window.location.href = '/'; // Adjust to your login route
+          return;
+      }
+
+      try {
+          const response = await fetch(`http://localhost:8080/user/${userID}`);
+          if (response.status!=200) {
+              throw new Error(response.message);
+          }
+
+          const userData = await response.json();
+          console.log(userData)
+          populateUserData(userData);
+      } catch (error) {
+          alert(error)
+      }
+  };
+load()
+function populateUserData(user) {
+  document.querySelector('.more-info h2').textContent = user.fullName || "No Name"; 
+  document.querySelector('.general h1').textContent = user.fullName || "No Name"; 
+  document.querySelector('.general p:nth-child(2)').innerHTML = `<strong>Bio:</strong> ${user.bio || "No Bio"}`; 
+  document.querySelector('.general p:nth-child(3)').innerHTML = `<strong>Department:</strong> ${user.department || "No Department"}`; 
+  document.querySelector('.general p:nth-child(4)').innerHTML = `<strong>Age:</strong> ${user.age || "Not Specified"}`; 
+  document.querySelector('.general p:nth-child(5)').innerHTML = `<strong>Gender:</strong> ${user.gender || "Not Specified"}`;  
+}
+
+</script>
+
+<div class="center">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
+    <div class="card-wrapper">
+        <div class="background-rectangle"></div>
+    </div>
+
+    <div class="card">
+      <div class="additional">
+        <div class="user-card">
+            <defs>
+              <clipPath id="scene">
+                <circle cx="125" cy="125" r="240"/>
+              </clipPath>
+            </defs>
+            <circle cx="125" cy="125" r="250" fill="rgba(0,0,0,0.15)" />
+            <g stroke="none" stroke-width="0" clip-path="url(#scene)">
+              <rect x="0" y="0" width="250" height="250" fill="#b0d2e5" />
+          <img src="../static/rev.png" alt="Profile Picture" class="profile-image" />
+        </div>
+        <div class="more-info">
+          <h2></h2> <!-- This will be updated -->
+          <div class="stats"></div>
+        </div>
+      </div>
+      <div class="general">
+        <h1></h1> <!-- This will be updated -->
+        <p></p> <!-- Placeholder -->
+        <p></p> <!-- Placeholder -->
+        <p></p> <!-- Placeholder -->
+        <p></p> <!-- Placeholder -->
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block css_file %}
+    profileCardStyle.css
+{% endblock %}

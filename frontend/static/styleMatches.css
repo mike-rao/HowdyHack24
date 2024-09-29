@@ -1,0 +1,137 @@
+/* General styles */
+body {
+  font-family: "Sriracha", sans-serif;
+  background-color: #f6c9d3; /* Light pink background */
+  color: #333;
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.background-rectangle {
+  width: 100px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
+  background-color: #500000; /* Rectangle color */
+  border-radius: 6px; /* Match the card's border-radius */
+  display: flex; /* Use flexbox to center the number */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  margin-right: 1rem; /* Space between the rectangle and the text */
+}
+
+.number {
+  font-family: "Sriracha", sans-serif;
+  color: white; /* Change the text color */
+  font-size: 24px; /* Adjust font size */
+  font-weight: bold; /* Make the number bold */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add a shadow for depth */
+}
+
+strong {
+  font-weight: bold; /* This is the default, but you can customize it */
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 60px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h1 {
+  font-family: "Sriracha", sans-serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #800000; /* Maroon for title */
+  font-size: 2.5rem;
+  padding-top: -70px;
+}
+
+/* Roommate list styling */
+.roommate-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Roommate card styling */
+.roommate-card {
+  background-color: #f6c9d3; /* Light pink card */
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 8px solid #800000; /* Maroon accent border */
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.roommate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Roommate name styling */
+.roommate-card h2 {
+  font-family: "Sriracha", sans-serif;
+  font-size: 1.8rem;
+  color: #800000; /* Maroon for roommate name */
+  margin-bottom: 0.5rem;
+}
+
+.roommate-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Button styling (if needed) */
+.btn {
+  font-family: "Sriracha", sans-serif;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #800000; /* Maroon button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #a52a2a; /* Darker maroon on hover */
+}
+
+/* Footer or Additional Info */
+.footer {
+  font-family: "Sriracha", sans-serif;
+  text-align: center;
+  padding: 20px;
+  color: #800000; /* Maroon footer */
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-family: "Sriracha", sans-serif;
+    font-size: 2rem;
+  }
+
+  .roommate-card h2 {
+    font-family: "Sriracha", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}

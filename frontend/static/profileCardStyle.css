@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+.sriracha-regular {
+    font-family: "Sriracha", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+html, body {
+  background: #f6c9d3;
+  font-family: "Sriracha", sans-serif;
+}
+
+.center {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.background-rectangle {
+    position: absolute;
+    top: -25px; /* Adjust this value to move the rectangle vertically */
+    left: -25px; /* Adjust this value to move the rectangle horizontally */
+    width: 740px; /* Same width as card, or slightly larger */
+    height: 420px; /* Same height as card, or slightly larger */
+    background-color: #500000; /* Choose the color you want for the rectangle */
+    z-index: 0; /* Ensure it stays behind the card */
+    border-radius: 6px; /* Match the card's border-radius */
+    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.3); /* Add some shadow if needed */
+  }
+
+.card {
+  width: 720px;
+  height: 400px;
+  background-color: #fff;
+  background: linear-gradient(#f8f8f8, #fff);
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin: 1.5rem;
+  z-index: 1;
+}
+
+.card h1 {
+  text-align: right;
+  font-size: 50px;
+}
+
+.card h2 {
+    text-align: right;
+  }
+
+.card p {
+    text-align: right;
+}
+
+.card .additional {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: #800000;
+  transition: width 0.4s;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.card .additional .user-card { /* the circle thing*/
+  width: 300px;
+  height: 100%;
+  position: relative;
+  float: right;
+}
+
+.card .additional .user-card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: -2px;
+  height: 80%;
+  border-left: 2px solid rgba(0,0,0,0.025);
+}
+
+
+.card .additional .user-card svg {
+  top: 50%;
+}
+
+.card .general {
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 1rem;
+  padding-top: 0;
+}
+
+strong {
+  font-weight: bold; /* This is the default, but you can customize it */
+  color: #800000; /* Maroon color for the labels */
+}
+
+.card .general .more {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.9em;
+}
+
+.user-card {
+  position: relative; /* Allows for positioning of the profile image */
+  width: 250px; /* Set the width of the card */
+  height: 250px; /* Set the height of the card */
+}
+
+.profile-image {
+  position: absolute; /* Position it absolutely */
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the image */
+  width: 200px; /* Set the width of the profile image */
+  height: 200px; /* Set the height of the profile image */
+  border-radius: 50%; /* Make it a circle */
+  border: 2px solid #800000; /* Maroon border around the image */
+  object-fit: cover; /* Ensure the image covers the entire area */
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: 'Sriracha', sans-serif;  /* You can use your preferred Google Font */
+  font-size: 16px;
+  color: #fff;
+  background-color: #500000; /* Button background color */
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #5a6268; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight upward lift on hover */
+}
+
+.back-button:active {
+  transform: translateY(0); /* Remove lift when clicking */
+}
+
+.back-button i {
+  margin-right: 8px; /* Space between icon and text */
+}
