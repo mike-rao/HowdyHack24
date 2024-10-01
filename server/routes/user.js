@@ -113,7 +113,7 @@ router.route("/match/:id").get(async function (req, res) {
       }
       return sum / arr1.length;
     };
-    // Convert dictionary into an array of key-value pairs for sorting
+    
     // Convert dictionary into an array of key-value pairs for sorting
     const sortedEntries = Object.entries(modifiedDict)
       .map(([key, value]) => {
