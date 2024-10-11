@@ -2,16 +2,24 @@ Overview
 This file outlines the documentation for AggieMatch and reveals some of the planning that went into the process.
 
 Project Inspiration
-Compatible roommates are hard to find: chances are you want someone similar to you, but you may not want a simple carbon copy of yourself - from hobbies to majors, it is so much fun to meet diverse people! AggieMatch was inspired by the desire to find YOUR perfect roommate for college!
-Our team started off with a short brainstorming session, listing off potential improvements to our everyday lives that could be solved using databases and algorithms. We came up with ideas ranging from calorie trackers to memory games. Eventually, one of our teammates came up with the idea of a signup page for Pokemon Go raids, which we then extended to the idea of matching people up with potential roommates.
+Compatible roommates are hard to find: chances are you want someone similar to you, but you may not want a simple carbon copy of yourself - from hobbies to majors, it 
+is so much fun to meet diverse people! AggieMatch was inspired by the desire to find YOUR perfect roommate for college!
+Our team started off with a short brainstorming session, listing off potential improvements to our everyday lives that could be solved using databases and algorithms. 
+We came up with ideas ranging from calorie trackers to memory games. Eventually, one of our teammates came up with the idea of a signup page for Pokemon Go raids, which 
+we then extended to the idea of matching people up with potential roommates.
 
 Functionality
-The user will be prompted to either make an account, or sign in. They will then be prompted to answer a series of questions about themselves and their ideal roommate. Then, they will be prompted to match with similar, potential roommates using a Tinder-like interface; users will be able to see who they matched with, along with their computer-generated percent match score.
+The user will be prompted to either make an account, or sign in. They will then be prompted to answer a series of questions about themselves and their ideal roommate. 
+Then, they will be prompted to match with similar, potential roommates using a Tinder-like interface; users will be able to see who they matched with, along with their 
+computer-generated percent match score.
 
 Implementation Process
-The web interface was built using a combination of HTML and CSS, using a variety of open-source templates that the team then edited to suit our needs. A navigation bar was built using Python and Flask for easy website navigation.
-When users first create an account, a new user ID will be generated in a MongoDB database, which initially stores their username and password. As they fill out information about themselves and their ideal roommate, their profile in MongoDB will be filled out.
-The website will then redirect users to a Tinder-like roommate matching page, where users will see bios and images of potential roommates. The roommates chosen to appear on the matching page is determined by a machine learning algorithm, explained further below. Roommates can choose to “swipe right” or “swipe left” on roommates.
+The web interface was built using a combination of HTML and CSS, using a variety of open-source templates that the team then edited to suit our needs. A navigation bar 
+was built using Python and Flask for easy website navigation.
+When users first create an account, a new user ID will be generated in a MongoDB database, which initially stores their username and password. As they fill out information 
+about themselves and their ideal roommate, their profile in MongoDB will be filled out.
+The website will then redirect users to a Tinder-like roommate matching page, where users will see bios and images of potential roommates. The roommates chosen to appear 
+on the matching page is determined by a machine learning algorithm, explained further below. Roommates can choose to “swipe right” or “swipe left” on roommates.
 The algorithm for determining similar matches between roommates can be represented by a 2D array. Here are the steps:
 1) User data retrieval
 2) Mapping of user attributes
@@ -21,16 +29,20 @@ The algorithm for determining similar matches between roommates can be represent
 6) Mean squared error (MSE) calculation - to calculate the “distance” between values in the array where the least distance corresponds to the most matched
 7) Sorting users by distance
 8) Select the top k users (k-nearest neighbors) - the process of looking at the nearest neighbors in terms of distance and making a prediction or grouping similar terms
-In summary, all attributes are assigned to values, and with a mix of differences, squares, and additions, a percentage is calculated to determine the “compatibility” of the user and all other roommates. Then the top few roommates are chosen to be viewable by the user. The user’s top matches and their profile cards are displayed on a separate page.
+In summary, all attributes are assigned to values, and with a mix of differences, squares, and additions, a percentage is calculated to determine the “compatibility” of 
+the user and all other roommates. Then the top few roommates are chosen to be viewable by the user. The user’s top matches and their profile cards are displayed on a separate page.
 
 Accomplishments
-As this was all team members’ first Hackathon and we all worked well together, implementing a website with 100% functionality. The UI looks very nice and the functionality is something unique within the Aggie community.
+As this was all team members’ first Hackathon and we all worked well together, implementing a website with 100% functionality. The UI looks very nice and the functionality is 
+something unique within the Aggie community.
 
 Experience Takeaways
-Many lessons were learned throughout the course of this project, but the main ones were how to link the front-end, back-end, and database, and developing a simple machine learning algorithm, as team members had very little experience working with a front end. We also experienced many difficulties while working with CSS, but learned much about making a comforting and nice design.
+Many lessons were learned throughout the course of this project, but the main ones were how to link the front-end, back-end, and database, and developing a simple machine learning 
+algorithm, as team members had very little experience working with a front end. We also experienced many difficulties while working with CSS, but learned much about making a comforting and nice design.
 
 Future Prospects
-AggieMatch has much to continue including adding more functionalities to editing your profile, adding a profile picture, and more advanced algorithms to sort the categories of roommate attributes. Additionally, we intend to improve account security and add email validation.
+AggieMatch has much to continue including adding more functionalities to editing your profile, adding a profile picture, and more advanced algorithms to sort the categories of 
+roommate attributes. Additionally, we intend to improve account security and add email validation.
 
 Technologies Used
 html - css - python - javascript - flas - mongodb - node.js
